@@ -15,7 +15,7 @@ exports.postAddProduct = (req, res, next) => {
   const description = req.body.description;
   const product = new Product({
     title: title, price: price, description: description,
-    imageUrl: imageUrl,
+    imageUrl: imageUrl, userId: req.user
   });
   product.save()
     .then(result => {
@@ -60,9 +60,10 @@ exports.postEditProduct = (req, res, next) => {
     product.price = updatedPrice;
     product.imageUrl = updatedImageUrl;
     product.description = updatedDesc;
+    product.userId = req.user;
     return product.save();
   }).then(result => {
-    console.log('UPDATED PRODUCT!');
+    console.log(`UPDATED PRODUCT: ${updatedTitle}`);
     res.redirect('/admin/products');
   })
     .catch(err => console.log(err));
@@ -70,6 +71,8 @@ exports.postEditProduct = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
   Product.find()
+    // .select('title price -_id')
+    // .populate('userId', 'name')
     .then(products => {
       res.render('admin/products', {
         prods: products,
