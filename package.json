@@ -8,19 +8,18 @@
     "start": "nodemon app.js",
     "start-server": "node app.js"
   },
-  "author": "Maximilian Schwarzmüller",
+  "author": "ByteAstro",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.1.0"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
-    "dotenv": "^16.4.5",
     "ejs": "^3.1.9",
     "express": "^4.16.3",
     "express-handlebars": "^7.1.2",
-    "mongodb": "^6.5.0",
-    "mongoose": "^8.2.3",
+    "mongodb": "^3.1.6",
+    "mongoose": "^5.2.17",
     "mysql2": "^1.6.1",
     "pug": "^3.0.2",
     "sequelize": "^6.37.1"
